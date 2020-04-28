@@ -47,11 +47,12 @@
     </style>
 </head>
 <body>
+        <!-- Mise en place du formulaire de recherche-->
     <form action="" method="GET">
         <input type="text" name="nom" id="city" placeholder="Ville recherché">
         <input type="submit">
     </form>
-    <div class="view">
+    <div class="view"><!-- Mise en place de la div qui va contenir les info recolté-->
 
     </div>
 

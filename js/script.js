@@ -2,28 +2,28 @@ function setOverlay(){
     $('body').append(`
         <div class="overlay"><img src="img/ajax-loader.svg"></div>
     `);
-}
+} // création de l'overlay
 
 function removeOverlay(){
     $('.overlay').remove();
-}
+} // supprésion de l'overlay
 
 
 // Quand le bouton est cliqué
 $('form').submit(function(e){
 
-    e.preventDefault();
+    e.preventDefault(); // on bloque le form
 
-    $('form').find('.error').remove();
+    $('form').find('.error').remove(); // si on trouve une erreur on l'enleve 
 
-    $citySearch = $('#city').val();
-    
+    $citySearch = $('#city').val(); 
+                // mise en place de  la verif champ
     if($citySearch.length < 1 ){
 
-        $('.view').html('<p class="error">champ vide</p>');
+        $('.view').html('<p class="error">champ vide</p>'); 
         
     } else {
-        $.ajax({
+        $.ajax({ //  requette ajax 
             type: 'GET',
             url: 'https://geo.api.gouv.fr/communes/',
             dataType: 'json',
@@ -51,19 +51,19 @@ $('form').submit(function(e){
                     // Création de la <tr> de la voiture en cours
                     let newCity = $('<tr></tr>');
 
-                    // Création du premier <td> contenant la version protégée (.text) de la marque de la voiture
+                    // Création du premier <td> contenant la version protégée (.text) du nom de la ville
                     let cityName = $('<td></td>');
                     cityName.text(city.nom);
 
-                    // Création du deuxième <td> contenant la version protégée (.text) de la couleur de la voiture
+                    // Création du deuxième <td> contenant la version protégée (.text) du code postal
                     let cityCode = $('<td></td>');
                     cityCode.text(city.code);
 
-                    // Création du troisème <td> contenant la version protégée (.text) de l'année de la voiture
+                    // Création du troisème <td> contenant la version protégée (.text) du nombre d'habitant
                     let cityPopu = $('<td></td>');
                     cityPopu.text(city.population);
 
-                    // Création du quatrième <td> contenant la version protégée (.text) des kilomètres de la voiture
+                    // Création du quatrième <td> contenant la version protégée (.text) du code departement
                     let cityDepart = $('<td></td>');
                     cityDepart.text(city.codeDepartement);
 
